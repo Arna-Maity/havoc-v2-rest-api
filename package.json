@@ -1,0 +1,28 @@
+{
+  "name": "havoc-v2-rest-api",
+  "version": "1.0.0",
+  "description": "HavocOS-v2 REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arna-Maity/havoc-v2-rest-api.git"
+  },
+  "keywords": [
+    "REST",
+    "API"
+  ],
+  "author": "Arna Maity",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Arna-Maity/havoc-v2-rest-api/issues"
+  },
+  "homepage": "https://github.com/Arna-Maity/havoc-v2-rest-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.15"
+  }
+}

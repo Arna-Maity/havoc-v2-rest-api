@@ -4,7 +4,7 @@
   "description": "HavocOS-v2 REST API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -12,7 +12,9 @@
   },
   "keywords": [
     "REST",
-    "API"
+    "API",
+    "expressjs",
+    "mongodb"
   ],
   "author": "Arna Maity",
   "license": "GPL-3.0",
@@ -24,5 +26,9 @@
     "express": "^4.17.1",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.15"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "nodemon": "^2.0.4"
   }
 }

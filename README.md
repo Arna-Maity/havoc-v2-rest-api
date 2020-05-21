@@ -2,6 +2,8 @@
 
 Test the APIs using [POSTMAN](https://www.postman.com/). 
 
+## Starting the API Server
+`npm run dev`
 
 ## References:
 

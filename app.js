@@ -36,7 +36,9 @@ app.use((req,res,next)=>{
 });
 
 // Log the incoming requests.
-//app.use(logger("default"));
+app.use(logger("combined"),(req,res,next)=>{
+    next();
+});
 
 //Body Parser Middleware
 app.use(express.urlencoded({extended: false}));
@@ -55,7 +57,7 @@ app.use((req,res,next)=>{
 });
 
 app.use((error,req,res,next)=>{
-    res.status = (error.status || 500);
+    res.status(error.status || 500);
     res.json({
         error:{
             message: error.message

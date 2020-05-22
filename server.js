@@ -1,3 +1,4 @@
+// Server to listen for HTTP requests at a particular port.
 const http = require('http');
 const app = require('./app');
 

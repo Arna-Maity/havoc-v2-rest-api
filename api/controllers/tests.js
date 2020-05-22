@@ -7,7 +7,9 @@ exports.getAllTests = (req,res,next)=>
     .select('_id msg')
     .exec()
     .then(docs=>{
+        if(process.env.NODE_ENV !== 'production'){
         console.log(docs);
+        }
         const response = {
             count: docs.length,
             tests: docs.map(docs=>{
@@ -24,7 +26,9 @@ exports.getAllTests = (req,res,next)=>
         res.status(200).json(response);
     })
     .catch(err=>{
-        console.log(err);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(err);
+            }
         res.status(500).json({error: err});
     });
 }
@@ -36,11 +40,15 @@ exports.getReqTest = (req,res,next)=>
     .select('_id msg')
     .exec()
     .then(result=>{
-        console.log(result);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(result);
+            }
         res.status(200).json(result);
     })
     .catch(err=>{
-        console.log(err);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(err);
+            }
         res.status(500).json({error: err});
     });
 
@@ -56,7 +64,9 @@ exports.postTest = (req,res,next)=>
     test
     .save()
     .then(result=>{
-        console.log(result);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(result);
+            }
         res.status(201).json({
             message: 'Test was created',
             createdTest: {
@@ -70,7 +80,9 @@ exports.postTest = (req,res,next)=>
         });
     })
     .catch(err=>{
-        console.log(err);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(err);
+            }
     });
 }
 
@@ -80,11 +92,15 @@ exports.deleteReqTest = (req,res,next)=>
     Test.remove({_id: id})
     .exec()
     .then(result=>{
-        console.log(result);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(result);
+            }
         res.status(201).json({message: "test deleted successfully"});
     })
     .catch(err=>{
-        console.log(err);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(err);
+            }
         res.status(500).json({error: err});
     });
 }
@@ -97,7 +113,9 @@ exports.patchReqTest = (req,res,next)=>{
     Test.update({_id: req.params.testId},{$set: updateOps})
     .exec()
     .then(result => {
-        console.log(result);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(result);
+            }
         res.status(200).json(
                  {
                     _id: result._id,
@@ -110,7 +128,9 @@ exports.patchReqTest = (req,res,next)=>{
          }
     )
     .catch(err=>{
-        console.log(err);
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(err);
+            }
         res.status(500).json({
             error: err
         });

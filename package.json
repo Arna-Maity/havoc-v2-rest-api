@@ -4,7 +4,8 @@
   "description": "HavocOS-v2 REST API",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -33,5 +34,8 @@
     "eslint": "^7.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }

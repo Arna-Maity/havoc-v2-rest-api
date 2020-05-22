@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const logger = require('morgan');
 
 const app = express();
 
@@ -16,9 +15,9 @@ mongoose.connect(
 
 // Importing Route Handlers.
 const deviceRoutes = require('./api/routes/devices');
-const teamRoutes = require('./api/routes/team');
-const testRoutes = require('./api/routes/test');   // only for testing purpose... will be removed later.
-const userRoutes = require('./api/routes/user');
+const developerRoutes = require('./api/routes/developers');
+const testRoutes = require('./api/routes/tests');   // only for testing purpose... will be removed later.
+const userRoutes = require('./api/routes/users');
 
 // Importing Models.
 const Device = require('./api/models/device');
@@ -38,9 +37,12 @@ app.use((req,res,next)=>{
 });
 
 // Log the incoming requests.
+if(process.env.NODE_ENV !== 'production'){
+const logger = require('morgan');
 app.use(logger("combined"),(req,res,next)=>{
     next();
 });
+}
 
 //Body Parser Middleware
 app.use(express.urlencoded({extended: false}));
@@ -48,7 +50,7 @@ app.use(express.json());
 
 // Handle /devices and /about routes.
 app.use('/devices',deviceRoutes);
-app.use('/about',teamRoutes);
+app.use('/about',developerRoutes);
 app.use('/test',testRoutes);   // only for testing purpose... will be removed later.
 app.use('/user',userRoutes);
 

@@ -1,0 +1,7 @@
+1. 22/05/2020
+   (commit: 1a80cfee3f50f964282e450bce62a64b461f7460 )
+    * Added Developer, Device, User(for testing only) Schemas
+    * Added routes for handling various HTTP requests.
+    * Implemented test APIs completely.
+    * Implemented JWT Auth for users.
+    * Implemented various Route Handlers.

@@ -1,6 +1,8 @@
 # havoc-v2-rest-api
 
 Test the APIs using [POSTMAN](https://www.postman.com/). 
+## Installing Dependencies
+`npm install`
 
 ## Starting the API Server
 `npm run dev`

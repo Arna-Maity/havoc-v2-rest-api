@@ -18,11 +18,13 @@ mongoose.connect(
 const deviceRoutes = require('./api/routes/devices');
 const teamRoutes = require('./api/routes/team');
 const testRoutes = require('./api/routes/test');   // only for testing purpose... will be removed later.
+const userRoutes = require('./api/routes/user');
 
 // Importing Models.
 const Device = require('./api/models/device');
 const Developer = require('./api/models/developer');
 const Test = require('./api/models/test');    // only for testing purpose... will be removed later.
+const User = require('./api/models/user');
 
 // Add Middleware to add the Access-Control-Allow-Origin header to the incoming requests.
 app.use((req,res,next)=>{
@@ -48,6 +50,7 @@ app.use(express.json());
 app.use('/devices',deviceRoutes);
 app.use('/about',teamRoutes);
 app.use('/test',testRoutes);   // only for testing purpose... will be removed later.
+app.use('/user',userRoutes);
 
 // Handle errors on invalid routes.
 app.use((req,res,next)=>{

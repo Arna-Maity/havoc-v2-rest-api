@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
 const Test = require('../models/test');
+const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
 
@@ -50,7 +52,7 @@ router.get('/:testId',(req,res,next)=>{
 });
 
 // POST ReqHandler at /
-router.post('/',(req,res,next)=>{
+router.post('/',checkAuth,(req,res,next)=>{
     const test = new Test({
         _id: mongoose.Types.ObjectId(),
         msg: req.body.msg 
@@ -78,7 +80,7 @@ router.post('/',(req,res,next)=>{
 });
 
 // DELETE ReqHandler at /:testId 
-router.delete('/:testId',(req,res,next)=>{
+router.delete('/:testId',checkAuth,(req,res,next)=>{
     const id = req.params.testId;
     Test.remove({_id: id})
     .exec()
@@ -93,7 +95,7 @@ router.delete('/:testId',(req,res,next)=>{
 });
 
 // PATCH ReqHandler at /:testId
-router.patch('/:testId',(req,res,next)=>{
+router.patch('/:testId',checkAuth,(req,res,next)=>{
     const updateOps = {};
     for(const ops of req.body){
         updateOps[ops.propName] = ops.value;

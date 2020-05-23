@@ -5,3 +5,8 @@
     * Implemented test APIs completely.
     * Implemented JWT Auth for users.
     * Implemented various Route Handlers.
+
+2. 23/05/2020
+
+   * Minor bug fixes to Developer & Device Controllers.
+   * Updated user schema to point to Developer.

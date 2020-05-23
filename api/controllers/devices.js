@@ -18,7 +18,7 @@ exports.getAllDevices = (req,res,next)=>
                     fields: docs.fields,
                     request:{
                         type: 'GET',
-                        url: 'http://localhost:3000/device/'+docs.fields.Codename
+                        url: 'http://localhost:3000/devices/'+docs.fields.Codename
                     }
                 };
             })
@@ -36,7 +36,7 @@ exports.getAllDevices = (req,res,next)=>
 exports.getReqDevice = (req,res,next)=>
 {
     const code = req.params.deviceCode;
-    Device.findOne({"fields.Codename": req.params.deviceCode})
+    Device.findOne({"fields.Codename": code})
     .select('_id fields')
     .exec()
     .then(result=>{

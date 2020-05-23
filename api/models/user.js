@@ -7,7 +7,8 @@ const userSchema = mongoose.Schema({
             unique: true 
             //match: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$}/
     },
+    developer: {type: mongoose.Schema.Types.ObjectId, ref: 'Developer', required: true },
     password: {type: String, required: true}
-});
+},{collection: 'user'});
 
 module.exports = mongoose.model("User",userSchema);

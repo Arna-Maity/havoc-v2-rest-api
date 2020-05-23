@@ -52,7 +52,7 @@ app.use(express.json());
 app.use('/devices',deviceRoutes);
 app.use('/about',developerRoutes);
 app.use('/test',testRoutes);   // only for testing purpose... will be removed later.
-app.use('/user',userRoutes);
+app.use('/admin',userRoutes);
 
 // Handle errors on invalid routes.
 app.use((req,res,next)=>{

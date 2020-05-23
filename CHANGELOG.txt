@@ -7,6 +7,8 @@
     * Implemented various Route Handlers.
 
 2. 23/05/2020
-
+   (commit: 8c471a8861ba1243fa270504a73d7a60bb70a97a )
    * Minor bug fixes to Developer & Device Controllers.
    * Updated user schema to point to Developer.
+   * isolated route handling logic into controllers and routes for user.
+   * Added Procfile for deployment configuration.

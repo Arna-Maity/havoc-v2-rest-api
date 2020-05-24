@@ -10,9 +10,9 @@ const router = express.Router();
 //router.post('/',deviceController.postDevice);
 
 // A GET ReqHandler at /devices/
-router.get('/',deviceController.getAllDevices);
+router.get('/', deviceController.getAllDevices);
 
 // A GET ReqHandler at /devices/:deviceCode/
-router.get('/:deviceCode',deviceController.getReqDevice);
+router.get('/:deviceCode', deviceController.getReqDevice);
 
 module.exports = router;

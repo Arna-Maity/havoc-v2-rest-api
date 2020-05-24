@@ -1,64 +1,61 @@
 const mongoose = require('mongoose');
 const Device = require('../models/device');
 
-exports.getAllDevices = (req,res,next)=>
-{
-        Device.find()
+exports.getAllDevices = (req, res, next) => {
+  Device.find()
     .select('_id fields')
     .exec()
-    .then(docs=>{
-        if(process.env.NODE_ENV !== 'production'){
+    .then((docs) => {
+      if (process.env.NODE_ENV !== 'production') {
         console.log(docs);
-        }
-        const response = {
-            count: docs.length,
-            devices: docs.map(docs=>{
-                return {
-                    _id: docs._id,
-                    fields: docs.fields,
-                    request:{
-                        type: 'GET',
-                        url: 'http://localhost:3000/devices/'+docs.fields.Codename
-                    }
-                };
-            })
-        };
-        res.status(200).json(response);
+      }
+      const response = {
+        count: docs.length,
+        devices: docs.map((docs) => {
+          return {
+            _id: docs._id,
+            fields: docs.fields,
+            request: {
+              type: 'GET',
+              url: 'http://localhost:3000/devices/' + docs.fields.Codename,
+            },
+          };
+        }),
+      };
+      res.status(200).json(response);
     })
-    .catch(err=>{
-        if(process.env.NODE_ENV !== 'production'){
-            console.log(err);
-            }
-        res.status(500).json({error: err});
+    .catch((err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(err);
+      }
+      res.status(500).json({ error: err });
     });
-}
+};
 
-exports.getReqDevice = (req,res,next)=>
-{
-    const code = req.params.deviceCode;
-    Device.findOne({"fields.Codename": code})
+exports.getReqDevice = (req, res, next) => {
+  const code = req.params.deviceCode;
+  Device.findOne({ 'fields.Codename': code })
     .select('_id fields')
     .exec()
-    .then(result=>{
-        if(process.env.NODE_ENV !== 'production'){
-            console.log(result);
-            }
-        res.status(200).json(result);
+    .then((result) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(result);
+      }
+      res.status(200).json(result);
     })
-    .catch(err=>{
-        if(process.env.NODE_ENV !== 'production'){
-            console.log(err);
-            }
-        res.status(500).json({error: err});
+    .catch((err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(err);
+      }
+      res.status(500).json({ error: err });
     });
-
-}
+};
 
 //exports.postDevice = (req,res,next)=>
 //{
 //    const device = new Device({
 //        _id: mongoose.Types.ObjectId(),
-//        msg: req.body.msg 
+//        msg: req.body.msg
 //    });
 //
 //    device
@@ -76,7 +73,7 @@ exports.getReqDevice = (req,res,next)=>
 //                    type: 'GET',
 //                    url: "http://localhost:3000/device/"
 //                }
-//            } 
+//            }
 //        });
 //    })
 //    .catch(err=>{

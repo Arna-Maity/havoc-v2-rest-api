@@ -1,64 +1,61 @@
 const mongoose = require('mongoose');
 const Developer = require('../models/developer');
 
-exports.getAllDevelopers = (req,res,next)=>
-{
-    Developer.find()
+exports.getAllDevelopers = (req, res, next) => {
+  Developer.find()
     .select('_id fields')
     .exec()
-    .then(docs=>{
-        if(process.env.NODE_ENV !== 'production'){
+    .then((docs) => {
+      if (process.env.NODE_ENV !== 'production') {
         console.log(docs);
-        }
-        const response = {
-            count: docs.length,
-            developers: docs.map(docs=>{
-                return {
-                    _id: docs._id,
-                    fields: docs.fields,
-                    request:{
-                        type: 'GET',
-                        url: 'http://localhost:3000/about/'+docs._id
-                    }
-                };
-            })
-        };
-        res.status(200).json(response);
+      }
+      const response = {
+        count: docs.length,
+        developers: docs.map((docs) => {
+          return {
+            _id: docs._id,
+            fields: docs.fields,
+            request: {
+              type: 'GET',
+              url: 'http://localhost:3000/about/' + docs._id,
+            },
+          };
+        }),
+      };
+      res.status(200).json(response);
     })
-    .catch(err=>{
-        if(process.env.NODE_ENV !== 'production'){
-            console.log(err);
-            }
-        res.status(500).json({error: err});
+    .catch((err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(err);
+      }
+      res.status(500).json({ error: err });
     });
-}
+};
 
-exports.getReqDeveloper = (req,res,next)=>
-{
-    const id = req.params.developerId;
-    Developer.findById(id)
+exports.getReqDeveloper = (req, res, next) => {
+  const id = req.params.developerId;
+  Developer.findById(id)
     .select('_id fields')
     .exec()
-    .then(result=>{
-        if(process.env.NODE_ENV !== 'production'){
-            console.log(result);
-            }
-        res.status(200).json(result);
+    .then((result) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(result);
+      }
+      res.status(200).json(result);
     })
-    .catch(err=>{
-        if(process.env.NODE_ENV !== 'production'){
-            console.log(err);
-            }
-        res.status(500).json({error: err});
+    .catch((err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(err);
+      }
+      res.status(500).json({ error: err });
     });
-
-}
+};
 
 //exports.postDeveloper = (req,res,next)=>
 //{
 //    const developer = new Developer({
 //        _id: mongoose.Types.ObjectId(),
-//        msg: req.body.msg 
+//        msg: req.body.msg
 //    });
 //
 //    developer
@@ -76,7 +73,7 @@ exports.getReqDeveloper = (req,res,next)=>
 //                    type: 'GET',
 //                    url: "http://localhost:3000/about/"
 //                }
-//            } 
+//            }
 //        });
 //    })
 //    .catch(err=>{

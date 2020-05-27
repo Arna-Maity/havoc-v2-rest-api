@@ -17,3 +17,7 @@
    (commit: a0030c7f9e46344d1bf224a99a12d4ed47e7a7c1 )
    * Added Travis Config file (Made testing and deployment pipeline).
    * Added Linter Config.
+
+3. 27/05/2020 (implement-cache)
+   (commit: a7b798392a26765cac846cd2e56dd5ca4d3242ca)
+   * Implement Cache for individual Devices and Developers.

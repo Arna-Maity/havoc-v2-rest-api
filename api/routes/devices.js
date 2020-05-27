@@ -1,5 +1,6 @@
 // Import Express
 const express = require('express');
+const cache = require('../middleware/cache');
 
 // Import Device Controller & Auth Middleware.
 const deviceController = require('../controllers/devices');
@@ -10,9 +11,9 @@ const router = express.Router();
 //router.post('/',deviceController.postDevice);
 
 // A GET ReqHandler at /devices/
-router.get('/', deviceController.getAllDevices);
+router.get('/', cache, deviceController.getAllDevices);
 
 // A GET ReqHandler at /devices/:deviceCode/
-router.get('/:deviceCode', deviceController.getReqDevice);
+router.get('/:deviceCode', cache, deviceController.getReqDevice);
 
 module.exports = router;

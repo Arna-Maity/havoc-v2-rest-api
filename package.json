@@ -27,12 +27,14 @@
   "homepage": "https://github.com/Arna-Maity/havoc-v2-rest-api#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.15",
     "node-cron": "^2.0.3",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "eslint": "^7.0.0",

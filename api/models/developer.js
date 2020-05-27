@@ -14,6 +14,7 @@ const developerSchema = mongoose.Schema(
       Gitlink: { type: String },
       Paylink: { type: String },
       Tellink: { type: String },
+      gitApiUrlSpecifier: { type: String },
     },
   },
   { collection: 'developer' }

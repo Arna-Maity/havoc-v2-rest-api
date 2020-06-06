@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 const Developer = require('../models/developer');
 
-exports.getAllDevelopers = (req, res, next) => {
+exports.getAllDevelopers = (req, res) => {
   Developer.find()
     .select('_id fields')
     .exec()
@@ -32,7 +32,7 @@ exports.getAllDevelopers = (req, res, next) => {
     });
 };
 
-exports.getReqDeveloper = (req, res, next) => {
+exports.getReqDeveloper = (req, res) => {
   const id = req.params.developerId;
   Developer.findById(id)
     .select('_id fields')

@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 const Device = require('../models/device');
 
-exports.getAllDevices = (req, res, next) => {
+exports.getAllDevices = (req, res) => {
   Device.find()
     .select('_id fields')
     .exec()
@@ -32,7 +32,7 @@ exports.getAllDevices = (req, res, next) => {
     });
 };
 
-exports.getReqDevice = (req, res, next) => {
+exports.getReqDevice = (req, res) => {
   const code = req.params.deviceCode;
   Device.findOne({ 'fields.Codename': code })
     .select('_id fields')

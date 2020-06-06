@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "format": "prettier --write \"api/**/*.js\""
+    "format": "prettier --write  \"{app,server}.js\" \"api/**/*.js\"",
+    "lint": "eslint {server,app}.js api/**/*.js"
   },
   "repository": {
     "type": "git",

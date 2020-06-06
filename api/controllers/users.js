@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-exports.getAllAdminUsers = (req, res, next) => {
+exports.getAllAdminUsers = (req, res) => {
   User.find()
     .exec()
     .then((result) => {
@@ -19,7 +19,7 @@ exports.getAllAdminUsers = (req, res, next) => {
     });
 };
 
-exports.addAdminUser = (req, res, next) => {
+exports.addAdminUser = (req, res) => {
   User.find({ email: req.body.email })
     .exec()
     .then((users) => {
@@ -62,7 +62,7 @@ exports.addAdminUser = (req, res, next) => {
     });
 };
 
-exports.loginAdminUser = (req, res, next) => {
+exports.loginAdminUser = (req, res) => {
   User.find({ email: req.body.email })
     .exec()
     .then((user) => {

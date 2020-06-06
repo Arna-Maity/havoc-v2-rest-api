@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Test = require('../models/test');
 
-exports.getAllTests = (req, res, next) => {
+exports.getAllTests = (req, res) => {
   Test.find()
     .select('_id msg')
     .exec()
@@ -32,7 +32,7 @@ exports.getAllTests = (req, res, next) => {
     });
 };
 
-exports.getReqTest = (req, res, next) => {
+exports.getReqTest = (req, res) => {
   const id = req.params.testId;
   Test.findById(id)
     .select('_id msg')
@@ -51,7 +51,7 @@ exports.getReqTest = (req, res, next) => {
     });
 };
 
-exports.postTest = (req, res, next) => {
+exports.postTest = (req, res) => {
   const test = new Test({
     _id: mongoose.Types.ObjectId(),
     msg: req.body.msg,
@@ -82,7 +82,7 @@ exports.postTest = (req, res, next) => {
     });
 };
 
-exports.deleteReqTest = (req, res, next) => {
+exports.deleteReqTest = (req, res) => {
   const id = req.params.testId;
   Test.remove({ _id: id })
     .exec()
@@ -100,7 +100,7 @@ exports.deleteReqTest = (req, res, next) => {
     });
 };
 
-exports.patchReqTest = (req, res, next) => {
+exports.patchReqTest = (req, res) => {
   const updateOps = {};
   for (const ops of req.body) {
     updateOps[ops.propName] = ops.value;

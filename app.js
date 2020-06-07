@@ -53,18 +53,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Handle /devices and /about routes.
-<<<<<<< HEAD
 app.use('/devices', deviceRoutes);
 app.use('/about', developerRoutes);
 app.use('/test', testRoutes); // only for testing purpose... will be removed later.
 app.use('/admin', userRoutes);
-=======
-app.use('/devices',deviceRoutes);
-
-app.use('/about',developerRoutes);
-app.use('/test',testRoutes);   // only for testing purpose... will be removed later.
-app.use('/admin',userRoutes);
->>>>>>> Implemented Cache for individual Developers and Devices.
 
 // Handle errors on invalid routes.
 app.use((req, res, next) => {

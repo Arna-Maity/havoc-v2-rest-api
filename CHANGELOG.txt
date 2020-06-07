@@ -12,3 +12,8 @@
    * Updated user schema to point to Developer.
    * isolated route handling logic into controllers and routes for user.
    * Added Procfile for deployment configuration.
+
+3. 06/06/2020
+   (commit: a0030c7f9e46344d1bf224a99a12d4ed47e7a7c1 )
+   * Added Travis Config file (Made testing and deployment pipeline).
+   * Added Linter Config.

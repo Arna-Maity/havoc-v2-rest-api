@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- 12
+before_install:
+- npm install -g npm
+script:
+- npm install
+- npm run lint
+deploy:
+  provider: heroku
+  api_key:
+    secure: ShRqWl55cHvIaAT1mnsHYColC6mKQFgs/dNGi0kwFKYukbjEWvl7u6JUZHFvS8Um54c0BGmb8vI8gBMfD+x5MaT/SnRvhXrVEHlhiMfmTrn4MakI02VLHtgtLjeESZn7NcXODYFvWrvljXgHK2eIBzzjEdocUeyFGSyyCg1dNYvC+OIKAfe0OrWkYO3OiU9V3b28a9x6LHkb3zVctXNl4Z1RYmb9Ut/kaqJmnz87p7PF5Eb08gxdY3q5iX2e23isetvgMn/kaX+MrVC0do3nZ7qXiKWS0bmHs41EQnra7SijSS4nRhGEJ43mbPUN1323lIfa133dNs455/m0ZwxBwfiq2TZ5bQO/nnEuxn2K7ktuJtZpjZYDsFtcCZcSC1ZuoE19J3EN4U2eqJ0RagdNblywuX/BhMUyP9K3GON2pZRetl0V9Y/Fi117HyoQhDPGPpLhmKVVaHztMoCN4sG85BWpYVk7xQHSNHIJ/aNdYoud9r3GzCvaZs4ZLjwnqAX9e6EFP6S9qPO2REvJcBcufFAd/m2+GCfYvUR/E/6dBnSNwOiHluNb7A2jmrKpF1apHgem0B2vlvmdRPuwiEotOC2k4fqLa1z9OUSQ/AFUPOTzz2zjT0UoC5hX+DlNUIXXFIKMTb7eyFLNPYs6u8XisfLXF7z7zlcbTZPLche8Sb0=
+  app: api-havoc-v2
+  on:
+    repo: Arna-Maity/havoc-v2-rest-api
+    branch: master
+  skip_cleanup: 'true'

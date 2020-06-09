@@ -1,6 +1,7 @@
 # havoc-v2-rest-api
+ 
+ \<root_url\> = [https://api-havoc-v2.herokuapp.com/](https://api-havoc-v2.herokuapp.com/)
 
-Test the APIs using [POSTMAN](https://www.postman.com/). 
 ## Installing Dependencies
 `npm install`
 
@@ -25,7 +26,27 @@ Test the APIs using [POSTMAN](https://www.postman.com/).
 
     Returns details regarding a particular developer identified by the <developerId> slug field.
 
-    
+## Testing the APIs:
+
+1. Using [POSTMAN](https://www.postman.com/).
+
+    POSTMAN is a GUI API Testing. It can be used for easily testing our APIs. You can read more about it in the above link.
+
+2. Using [cURL](https://curl.haxx.se/).
+
+    cURL is a command-line program which comes preinstalled with most Linux Distros. If you do not want to go through the extra hassle of setting up a separate application for API testing, you can use this option instead.
+
+    Ex:
+
+    `curl -X GET -H "Accept: application/json" <root_url>/about | json_pp`
+
+    #### -X GET -> (Sets the HTTP Request type to GET)
+    #### -H "Accept: application/json" -> (Sets HTTP Request Header Attribute)
+    #### <root_url>/about -> (Request URL)
+    #### json_pp -> (Formats curl output into a readable JSON format)
+
+    The above command would return a list of developers currently involved with the project.
+
 ## References:
 
 1. [REST API Tutorial Series](https://www.youtube.com/playlist?list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q).

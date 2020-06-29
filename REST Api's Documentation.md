@@ -14,4 +14,4 @@ REST stands for Representational State Transfer. It is a software architecture s
 <img src="https://user-images.githubusercontent.com/47572837/86048670-87754580-ba6e-11ea-9282-d284029b7bab.jpg" width="90%"></img> 
 
 ### REST API Flowchart Diagram ??
-<img src="https://user-images.githubusercontent.com/47572837/86048666-85ab8200-ba6e-11ea-9727-e6d0384db0ca.png" width="90%"></img> 
+<img src="https://user-images.githubusercontent.com/47572837/86048666-85ab8200-ba6e-11ea-9727-e6d0384db0ca.png" width="45%"></img> 

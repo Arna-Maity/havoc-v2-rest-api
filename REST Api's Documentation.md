@@ -5,5 +5,6 @@ REST stands for Representational State Transfer. It is a software architecture s
 # Some Key Features!
 
   - It is more simpler than SOAP (Simple Object Access Protocol).
+  - It is stateless.
   - It has a proper documentation.
   - It gives you proper logging of error.

@@ -15,4 +15,4 @@ REST stands for Representational State Transfer. It is a software architecture s
 
 
 ### REST API Flowchart Diagram
-<img src="https://user-images.githubusercontent.com/47572837/86048666-85ab8200-ba6e-11ea-9727-e6d0384db0ca.png" width="45%"></img> 
+![rest-api-flowchart-diagram](https://github.com/vsasvipul0605/havoc-v2-rest-pi/blob/implement-new/docs/images/rest-api-flow-diagram.png)

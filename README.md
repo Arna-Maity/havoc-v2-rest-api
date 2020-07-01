@@ -47,6 +47,23 @@
 
     The above command would return a list of developers currently involved with the project.
 
+## Using Docker to run the application:
+
+    Prerequisites:
+    1. docker (dependency of docker-compose)
+    2. docker-compose
+
+`sudo docker-compose up`
+
+The above command will setup all the necessary containers on your system to run the application.
+
+Presently, the application depends on 2 containers to run properly:
+
+1. **redis** (used for **caching**).
+2. The **app** itself (the container for the app is built automatically when the above command is run).
+
+![Docker Setup](docs/images/docker-setup.png)
+
 ## References:
 
 1. [REST API Tutorial Series](https://www.youtube.com/playlist?list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q).

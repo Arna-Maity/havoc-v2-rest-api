@@ -4,9 +4,18 @@ services:
     env_file:
       - .env
     build: .
+    networks:
+      - backend
+    depends_on: 
+      - cache_store
     ports:
       - "3000:3000"
-  redis:
+  cache_store:
     image: "redis:alpine"
+    networks:
+      - backend
     ports: 
       - "6379:6379"
+
+networks:
+  backend:

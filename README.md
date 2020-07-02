@@ -64,6 +64,10 @@ Presently, the application depends on 2 containers to run properly:
 
 ![Docker Setup](docs/images/docker-setup.png)
 
+To stop and remove the running containers:
+
+`sudo docker-compose down`
+
 ## References:
 
 1. [REST API Tutorial Series](https://www.youtube.com/playlist?list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q).

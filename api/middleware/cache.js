@@ -12,7 +12,8 @@ mongoose.connect(
   }
 );
 
-const redisClient = redis.createClient(6379);
+const REDIS_URL = "redis://" + process.env.REDIS_HOST + ":" + process.env.REDIS_PORT;
+const redisClient = redis.createClient(REDIS_URL);
 
 module.exports = (req, res, next) => {
   //console.log(req.baseUrl);  // Testing

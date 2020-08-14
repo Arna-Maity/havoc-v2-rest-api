@@ -5,7 +5,10 @@ const mongoose = require('mongoose') ;
 
 // SETUP CRON AND CALLING UPDATE FUNC
 const cron = require('node-cron') ;
-cron.schedule('0 0 10 * * *', updateDaily) ;
+cron.schedule('0 0 * * *', updateDaily, {
+    scheduled: true,
+    timezone: "Asia/Kolkata"
+  }) ;
 
 exports.getAllDevelopers = (req, res) => {
     
@@ -84,43 +87,47 @@ exports.getIdDeveloper = (req, res) => {
 
 // FUNC RUNS DAILY ACC TO CRON SETUP
 function updateDaily(){
-    Developer.find()
-    .select('fields')
-    .exec()
-    .then((docs) => {
-        // const usernames = docs.map((docs) => {
-        //         return docs.fields.Gitlink.slice(19, docs.fields.Gitlink.length)
-        //     })
-        const usernames = [
-            'ZeNiXxX',
-            'Arna-Maity',
-            'travarilo',
-            'SKULSHADY',
-            'ComicoTeam',
-            'SyberHexen',
-            'Jprimero15',
-            'nuub1k',
-            'SonalSingh18',
-            'abhijit1998',
-            'Blacksuan19',
-            'SiddharthBharadwaj',
-            'rishivyas1969',
-            'vsasvipul0605'
-           ]
-        console.log(usernames) ;
-        usernames.forEach( (username) => {
-            getData('https://api.github.com/users/' + username)
-            .then(data => {
-                useData(data) ;
-                // createData(data) ;  // <= WORKING
-                updateData(data) ;  // <= WORKING
-            })
-        }) ;
-        // deleteData() ;  // <= WORKING
-    })
-    .catch((err) => {
-        console.log(err) ;
-    })
+
+    const usernames = [
+        'ZeNiXxX',
+        'Arna-Maity',
+        'travarilo',
+        'SKULSHADY',
+        'ComicoTeam',
+        'SyberHexen',
+        'Jprimero15',
+        'nuub1k',
+        'SonalSingh18',
+        'abhijit1998',
+        'Blacksuan19',
+        'SiddharthBharadwaj',
+        'rishivyas1969',
+        'vsasvipul0605'
+       ]
+    console.log(usernames) ;
+    usernames.forEach( (username) => {
+        getData('https://api.github.com/users/' + username)
+        .then(data => {
+            useData(data) ;
+            // createData(data) ;  // <= WORKING
+            updateData(data) ;  // <= WORKING
+        })
+    }) ;
+
+
+    // Developer.find()
+    // .select('fields')
+    // .exec()
+    // .then((docs) => {
+    //     // const usernames = docs.map((docs) => {
+    //     //         return docs.fields.Gitlink.slice(19, docs.fields.Gitlink.length)
+    //     //     })
+        
+    //     // deleteData() ;  // <= WORKING
+    // })
+    // .catch((err) => {
+    //     console.log(err) ;
+    // })
 }
 
 // FETCH USER DATA FROM GITHUB API

@@ -14,6 +14,11 @@ const developerSchema = mongoose.Schema(
       Gitlink: { type: String },
       Paylink: { type: String },
       Tellink: { type: String },
+      login: { type: String, required: true}, // Updating Field
+      avatar_url: { type: String},            // Updating Field
+      url: { type: String, required: true},   // Updating Field
+      html_url: { type: String, required: true}, // Updating Field
+      bio: { type: String },                  // Updating Field
     },
   },
   { collection: 'developer' }

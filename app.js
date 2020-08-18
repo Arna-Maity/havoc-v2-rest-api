@@ -2,22 +2,25 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
+// UPDATE
+const updateDev = require('./autoupdate/update') ;
+
 
 // Connect with MongoDB Atlas
 mongoose.connect(
   process.env.MONGO_URI,
-
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false
   }
 );
 
 // Importing Route Handlers.
 const deviceRoutes = require('./api/routes/devices');
 const developerRoutes = require('./api/routes/developers');
-const testRoutes = require('./api/routes/tests'); // only for testing purpose... will be removed later.
-const userRoutes = require('./api/routes/users');
+// const testRoutes = require('./api/routes/tests'); // only for testing purpose... will be removed later.
+// const userRoutes = require('./api/routes/users');
 
 // Importing Models.
 //const Device = require('./api/models/device');
@@ -54,8 +57,12 @@ app.use(express.json());
 // Handle /devices and /about routes.
 app.use('/devices', deviceRoutes);
 app.use('/about', developerRoutes);
-app.use('/test', testRoutes); // only for testing purpose... will be removed later.
-app.use('/admin', userRoutes);
+// app.use('/test', testRoutes); // only for testing purpose... will be removed later.
+// app.use('/admin', userRoutes);
+
+// UPDATE
+app.get('/testing', updateDev.getAllDevelopers) ;
+app.get('/testing/:developerUsername', updateDev.getIdDeveloper) ;
 
 // Handle errors on invalid routes.
 app.use((req, res, next) => {

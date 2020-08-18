@@ -5,7 +5,7 @@ const updateDeveloperSchema = mongoose.Schema(
         username: { type: String, required: true},
         main: {
             login: { type: String, required: true},
-            avatar_url: { type: String, required: true},
+            avatar_url: { type: String},
             url: { type: String, required: true},
             html_url: { type: String, required: true},
             bio: { type: String },

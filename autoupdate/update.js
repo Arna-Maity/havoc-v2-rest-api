@@ -41,7 +41,9 @@ exports.getAllDevelopers = (req, res) => {
     // }) ;
     // // deleteData() ;  // <= WORKING
 
+    
 
+    // updateDaily() ;
 
     updateDeveloper.find()
     .select('_id username main')
@@ -88,31 +90,49 @@ exports.getIdDeveloper = (req, res) => {
 // FUNC RUNS DAILY ACC TO CRON SETUP
 function updateDaily(){
 
-    const usernames = [
-        'ZeNiXxX',
-        'Arna-Maity',
-        'travarilo',
-        'SKULSHADY',
-        'ComicoTeam',
-        'SyberHexen',
-        'Jprimero15',
-        'nuub1k',
-        'SonalSingh18',
-        'abhijit1998',
-        'Blacksuan19',
-        'SiddharthBharadwaj',
-        'rishivyas1969',
-        'vsasvipul0605'
-       ]
-    console.log(usernames) ;
-    usernames.forEach( (username) => {
-        getData('https://api.github.com/users/' + username)
-        .then(data => {
-            useData(data) ;
-            // createData(data) ;  // <= WORKING
-            updateData(data) ;  // <= WORKING
+    Developer.find()
+    .then(docs => {
+        docs.forEach(doc => {
+            // console.log(doc.fields.Gitlink.slice(19, doc.fields.Gitlink.length)) ;
+            const username = doc.fields.Gitlink.slice(19, doc.fields.Gitlink.length) ;
+
+            getData('https://api.github.com/users/' + username)
+            .then(data => {
+                // useData(data) ;
+                // console.log('--->' + doc.fields.Name + '<----') ;
+                // createData(data) ;  // <= WORKING
+                updateData(data, doc) ;  // <= WORKING
+            })
+
         })
-    }) ;
+    })
+
+
+    // const usernames = [
+    //     'ZeNiXxX',
+    //     'Arna-Maity',
+    //     'travarilo',
+    //     'SKULSHADY',
+    //     'ComicoTeam',
+    //     'SyberHexen',
+    //     'Jprimero15',
+    //     'nuub1k',
+    //     'SonalSingh18',
+    //     'abhijit1998',
+    //     'Blacksuan19',
+    //     'SiddharthBharadwaj',
+    //     'rishivyas1969',
+    //     'vsasvipul0605'
+    //    ]
+    // console.log(usernames) ;
+    // usernames.forEach( (username) => {
+    //     getData('https://api.github.com/users/' + username)
+    //     .then(data => {
+    //         useData(data) ;
+    //         // createData(data) ;  // <= WORKING
+    //         updateData(data) ;  // <= WORKING
+    //     })
+    // }) ;
 
 
     // Developer.find()
@@ -168,28 +188,60 @@ function createData(data){
 }
 
 // UPDATE DEVELOPER DATA IN updateDeveloper
-function updateData(data){
-    const newMain = {
-        login: data.login,
-        avatar_url: data.avatar_url,
-        url: data.url,
-        html_url: data.html_url,
-        bio: data.bio
-    }
-    
-    const filter = {username: data.login  }
-    updateDeveloper.findOneAndUpdate(filter, {main: newMain}, {
-        new: true,
-        upsert: true // Make this update into an upsert
-      },  (err, result) => {
-        if(err) {
-            console.log(err) ;
-        }else{
-            console.log('----------DEV DATA UPDATED---------------') ;
-            console.log(result) ;
-            console.log('-----------------------------------') ;
+function updateData(gitData, aboutDoc){
+
+    // console.log(aboutDoc._id) ;
+    // useData(gitData) ;
+
+    Developer.findOneAndUpdate(
+        {_id: aboutDoc._id},
+        {
+            $set: {
+                'fields.login': gitData.login,
+                'fields.avatar_url': gitData.avatar_url,
+                'fields.url': gitData.url,
+                'fields.html_url': gitData.html_url,
+                'fields.bio': gitData.bio
+            }
+        },
+        (err, result) => {
+            if(err) {
+                console.log(err) ;
+            }
+            else{
+                console.log('----------DEV DATA UPDATED---------------') ;
+                console.log(result) ;
+                console.log('-----------------------------------') ;
+            }
         }
-    })
+        )
+        
+    
+
+
+    // const newMain = {
+    //     login: data.login,
+    //     avatar_url: data.avatar_url,
+    //     url: data.url,
+    //     html_url: data.html_url,
+    //     bio: data.bio
+    // }
+    
+    // const filter = {username: data.login  }
+    // updateDeveloper.findOneAndUpdate(filter, {main: newMain}, {
+    //     new: true,
+    //     upsert: true // Make this update into an upsert
+    //   },  (err, result) => {
+    //     if(err) {
+    //         console.log(err) ;
+    //     }else{
+    //         console.log('----------DEV DATA UPDATED---------------') ;
+    //         console.log(result) ;
+    //         console.log('-----------------------------------') ;
+    //     }
+    // })
+
+
 }
 
 // DELETE DEVELOPER DATA IN updateDeveloper
@@ -202,10 +254,10 @@ function deleteData(){
 }
 
 function useData(data){
+    console.log('----------------------------------------------------') ;
     console.log('login     : ' + data.login) ;
     console.log('avatar_url: ' + data.avatar_url) ;
     console.log('url       : ' + data.url) ;
     console.log('html_url  : ' + data.html_url) ;
     console.log('bio       : ' + data.bio) ;
-    console.log('----------------------------------------------------') ;
 }

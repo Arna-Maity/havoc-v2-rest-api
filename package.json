@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Arna-Maity/havoc-v2-rest-api#readme",
   "dependencies": {
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.7",

@@ -5,7 +5,8 @@ const mongoose = require('mongoose') ;
 
 // SETUP CRON AND CALLING UPDATE FUNC
 const cron = require('node-cron') ;
-cron.schedule('0 0 * * *', updateDaily, {
+
+cron.schedule('0 0 * * *',updateDaily, {
     scheduled: true,
     timezone: "Asia/Kolkata"
   }) ;

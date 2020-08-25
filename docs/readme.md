@@ -1,4 +1,4 @@
-![rest-api-flowchart-diagram](https://github.com/vsasvipul0605/havoc-v2-rest-api/blob/implement-readme/docs/images/block-diagram.png)
+![rest-api-flowchart-diagram](/docs/images/block-diagram.png)
 <br>
 **`cron.schedule()`**
 <br>

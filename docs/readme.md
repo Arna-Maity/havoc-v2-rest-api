@@ -16,4 +16,4 @@ A[updateDaily] --data/username--> D[updateData]
 ```
 
 ### REST API Flowchart Diagram
-![rest-api-flowchart-diagram](https://github.com/vsasvipul0605/havoc-v2-rest-api/blob/implement-new/docs/images/rest-api-flow-diagram.png)
+![rest-api-flowchart-diagram](https://github.com/vsasvipul0605/havoc-v2-rest-api/blob/master/docs/images/rest-api-flow-diagram.png)

@@ -1,4 +1,5 @@
 ![rest-api-flowchart-diagram](https://github.com/vsasvipul0605/havoc-v2-rest-api/blob/implement-readme/docs/images/block-diagram.png)
+<br>
 **`cron.schedule()`**
 <br>
 This function running **`updateDaily()`** function periodically at a set fixed interval of time, i.e, exactly 12 a:m in midnight daily.
